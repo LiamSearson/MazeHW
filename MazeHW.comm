@@ -1,0 +1,16 @@
+class IDLE:
+    pass
+
+class MAZE:
+    def master():
+        def events():
+            reset
+            moveToXPosition
+            moveToYPosition
+            demo
+        def values():
+            xPosition = uint32_t
+            yPosition = uint32_t
+    def tablet():
+        def events():
+            finishedAction
