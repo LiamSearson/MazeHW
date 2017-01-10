@@ -27,10 +27,7 @@ var MAZE = {
       yPosition: new HardwareValue(1, 1, Manager.TYPE_UINT32)
     },
     events: {
-      reset: function reset() { manager.sendEvent(0, 1); },
-      moveToXPosition: function moveToXPosition() { manager.sendEvent(1, 1); },
-      moveToYPosition: function moveToYPosition() { manager.sendEvent(2, 1); },
-      demo: function demo() { manager.sendEvent(3, 1); }
+      reset: function reset() { manager.sendEvent(0, 1); }
     }
   },
   tablet: {

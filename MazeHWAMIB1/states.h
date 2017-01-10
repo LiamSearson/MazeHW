@@ -37,9 +37,6 @@ void finishedAction();
 
 namespace events {
 void reset();
-void moveToXPosition();
-void moveToYPosition();
-void demo();
 }
 }
 

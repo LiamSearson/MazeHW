@@ -21,24 +21,27 @@ void setup() {
   yAxis.setAccelerationInStepsPerSecondPerSecond(10000);
   xAxis.moveToHomeInSteps(-1, 6000, 400 * microstepping, xHomeSensor);
   yAxis.moveToHomeInSteps(-1, 6000, 400 * microstepping, yHomeSensor);
-  xAxis.moveToPositionInSteps(73 * microstepping);
-  yAxis.moveToPositionInSteps(73 * microstepping);
+  xAxis.moveToPositionInSteps(180 * microstepping);
+  yAxis.moveToPositionInSteps(200 * microstepping);
   readyForMove = true;
 }
 
 void loop() {
-  if(readyForMove){
-    /*if(xPosition.changed){
-        xAxis.moveToPositionInSteps(xPosition.value/100.0);
-    }
-    if(yPosition.changed){
-        yAxis.moveToPositionInSteps(yPosition.value/100.0);
-    }*/
+  if(xPosition.changed || yPosition.value){
     xAxis.setTargetPositionInSteps(xPosition.value);
     yAxis.setTargetPositionInSteps(yPosition.value);
   }
-  xAxis.processMovement();
-  yAxis.processMovement();
+  if(readyForMove){
+    xAxis.processMovement();
+    yAxis.processMovement();
+  }
+}
+
+void enter(){
+  xAxis.moveToPositionInSteps(180 * microstepping);
+  yAxis.moveToPositionInSteps(200 * microstepping);
+  xPosition.value = 180 * microstepping;
+  yPosition.value = 200 * microstepping;
 }
 
 void events::reset(){
@@ -53,33 +56,6 @@ void events::reset(){
   yAxis.moveToPositionInSteps(.35);
   readyForMove = true;
   tablet::events::finishedAction();
-}
-
-void events::moveToXPosition(){
-    xAxis.moveToPositionInSteps(xPosition.value);  //enter from 0 to 73 * microstepping
-}
-
-void events::moveToYPosition(){
-  yAxis.moveToPositionInSteps(yPosition.value); //enter from 0 to 70
-}
-
-void events::demo(){
-  for(int x = 0; x < 5; x++){
-    xAxis.setSpeedInStepsPerSecond(500);
-    yAxis.setSpeedInStepsPerSecond(500);
-    xAxis.setTargetPositionInSteps(0);
-    yAxis.setTargetPositionInSteps(0);
-    while(!xAxis.motionComplete() || !yAxis.motionComplete()){
-      xAxis.processMovement();
-      yAxis.processMovement();
-    }
-    xAxis.setTargetPositionInSteps(1168);
-    yAxis.setTargetPositionInSteps(1168);
-    while(!xAxis.motionComplete() || !yAxis.motionComplete()){
-      xAxis.processMovement();
-      yAxis.processMovement();
-    }
-  }
 }
 
 }

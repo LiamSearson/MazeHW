@@ -10,7 +10,7 @@ static const WireValue wire_values[2] = {
   {1, 1, sizeof(uint32_t), (Value<void*>*) &MAZE::yPosition}
 };
 
-MasterManager<State, 2, 2> manager(0x7bc01f47, state_infos, wire_values, 0);
+MasterManager<State, 2, 2> manager(0x540a26b3, state_infos, wire_values, 0);
 
 namespace IDLE {
 
@@ -33,15 +33,6 @@ void event(uint8_t ev) {
   switch (ev) {
   case 0:
     events::reset();
-    break;
-  case 1:
-    events::moveToXPosition();
-    break;
-  case 2:
-    events::moveToYPosition();
-    break;
-  case 3:
-    events::demo();
     break;
   default:
     break;
