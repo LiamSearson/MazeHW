@@ -27,14 +27,16 @@ void setup() {
 }
 
 void loop() {
-  if(xPosition.changed || yPosition.value){
-    xAxis.setTargetPositionInSteps(xPosition.value);
-    yAxis.setTargetPositionInSteps(yPosition.value);
-  }
-  if(readyForMove){
-    xAxis.processMovement();
-    yAxis.processMovement();
-  }
+  //if((xPosition.value <= 2900 && yPosition.value <= 2900) && (xPosition.value >= 0 && yPosition.value >= 0)){
+    if(xPosition.changed || yPosition.value){
+      xAxis.setTargetPositionInSteps(xPosition.value);
+      yAxis.setTargetPositionInSteps(yPosition.value);
+    }
+    if(readyForMove){
+      xAxis.processMovement();
+      yAxis.processMovement();
+    }
+  //}
 }
 
 void enter(){
