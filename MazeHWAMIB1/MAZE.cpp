@@ -21,9 +21,11 @@ void setup() {
   yAxis.setAccelerationInStepsPerSecondPerSecond(10000);
   xAxis.moveToHomeInSteps(-1, 6000, 400 * microstepping, xHomeSensor);
   yAxis.moveToHomeInSteps(-1, 6000, 400 * microstepping, yHomeSensor);
-  xAxis.moveToPositionInSteps(180 * microstepping);
-  yAxis.moveToPositionInSteps(200 * microstepping);
+  xAxis.moveToPositionInSteps(170 * microstepping);
+  yAxis.moveToPositionInSteps(170 * microstepping);
   readyForMove = true;
+  xPosition.value = 170 * microstepping;
+  yPosition.value = 170 * microstepping;
 }
 
 void loop() {
@@ -39,23 +41,17 @@ void loop() {
   //}
 }
 
-void enter(){
-  xAxis.moveToPositionInSteps(180 * microstepping);
-  yAxis.moveToPositionInSteps(200 * microstepping);
-  xPosition.value = 180 * microstepping;
-  yPosition.value = 200 * microstepping;
-}
 
 void events::reset(){
   readyForMove = false;
-  xAxis.setSpeedInStepsPerSecond(3000);
-  yAxis.setSpeedInStepsPerSecond(3000);
   xAxis.enableStepper();
   yAxis.enableStepper();
-  xAxis.moveToHomeInSteps(-1, 3000, 400*microstepping, xHomeSensor);
-  yAxis.moveToHomeInSteps(-1,3000,400*microstepping, yHomeSensor);
-  xAxis.moveToPositionInSteps(.35);
-  yAxis.moveToPositionInSteps(.35);
+  xAxis.moveToHomeInSteps(-1, 6000, 400 * microstepping, xHomeSensor);
+  yAxis.moveToHomeInSteps(-1, 6000, 400 * microstepping, yHomeSensor);
+  xAxis.moveToPositionInSteps(170 * microstepping);
+  yAxis.moveToPositionInSteps(170 * microstepping);
+  xPosition.value = 170 * microstepping;
+  yPosition.value = 170 * microstepping;
   readyForMove = true;
   tablet::events::finishedAction();
 }
