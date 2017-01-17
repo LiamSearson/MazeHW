@@ -10,7 +10,7 @@ byte yHomeSensor = 28;
 bool readyForMove = false;
 int microstepping = 8; //highest 1/32
 
-void setup() {
+void setup() {        //sets up the maze with its steppers and moves it to the home position then makes it flat
   xAxis.connectToPort(1);
   yAxis.connectToPort(2);
   xAxis.enableStepper();
@@ -33,7 +33,7 @@ void loop() {
     if(xPosition.changed || yPosition.value){
       xAxis.setTargetPositionInSteps(xPosition.value);
       yAxis.setTargetPositionInSteps(yPosition.value);
-    }
+    } //checks to see if the values for the steppers have changed and then moves the steppers to the new values
     if(readyForMove){
       xAxis.processMovement();
       yAxis.processMovement();
@@ -42,7 +42,7 @@ void loop() {
 }
 
 
-void events::reset(){
+void events::reset(){ //an event to do the same thing as setup, but it just homes the maze steppers again and flattens it out
   readyForMove = false;
   xAxis.enableStepper();
   yAxis.enableStepper();
